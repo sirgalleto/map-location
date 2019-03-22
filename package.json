@@ -1,0 +1,7 @@
+{
+  "name": "skycatch-challenge",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.10.5"
+  }
+}
