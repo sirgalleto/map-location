@@ -12,23 +12,33 @@ The frontend should have at least basic editing capabilities for locations, and 
 
 ## Constraints 
 
+* The tecnology stack should follow the following recomendations: 
+  * Backend: - Node 8 - Hapi v17, Express or Koa - RDBMS (e.g. MySQL, SQLite, etc.). 
+  * Frontend: - React, Vue or Angular (not AngularJS).
 * The configuration should tend to cero, so the application could be executed in a couple of commands.
+
+## Tech stack choice 
+* Frontend:
+  * VueJS
+  * Vuex
+  * MapBox
+* Backend
+  * Express
+  * Sequelize
+  * SQLite
+  * SocketIO
 
 ## Solution proposal 
 
 The problem can be divided in two components: 
 
-* A *Location API* component that interacts with a Database where the map locations , and expose a RESTFUL endpoint where any client can perform CRUD actions to the location entity, as well as a web socket channel that sends an event when an update happens.
+* A *Location API* component that interacts with a datastore where the map locations are located, and expose a RESTFUL endpoint where any client can perform CRUD actions to the location entity, as well as a web socket channel that sends an event when an update happens.
 
 * A *frontend client* that presents to the user a map to interact with the locations exposed in the API, with the ability to create, update and delete the locations retrieved. And, receive the real-time updates via web socket connection. 
 
 ### Location API
 
-#### Technology Stack
-
-- Node 8 
-- Express 
-- SocketIO
+A new locations API that runs using node 8, 
 
 #### Overview 
 
