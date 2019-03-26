@@ -1,10 +1,14 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "locations.sqlite"
+    "storage": "locations-datastore-dev.sqlite"
   },
   "production": {
     "dialect": "sqlite",
-    "storage": "locations.sqlite"
+    "storage": "locations-datastore.sqlite"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": "locations-datastore-test.sqlite"
   }
 }
