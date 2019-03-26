@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pre-start": "NODE_ENV=production sequelize db:migrate",
+    "prestart": "NODE_ENV=production sequelize db:migrate",
     "start": "NODE_ENV=production node index.js",
-    "pre-dev": "NODE_ENV=development sequelize db:migrate",
+    "predev": "NODE_ENV=development sequelize db:migrate",
     "dev": "NODE_ENV=development nodemon index.js"
   },
   "author": "Sebastián Osorio <sir@galleto.xyz>",
