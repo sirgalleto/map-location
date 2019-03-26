@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "NODE_ENV=development vue-cli-service serve",
+    "start": "NODE_ENV=production vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "echo \"no test added (yet)\""
   },
   "dependencies": {
     "vue": "^2.6.6"
