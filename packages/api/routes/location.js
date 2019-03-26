@@ -1,12 +1,12 @@
 const express = require("express");
 const LocationController = require("../controllers/location");
 
-const router = express();
+const app = express();
 
-router.get("/", LocationController.get);
-router.get("/:id", LocationController.getById);
-router.post("/", LocationController.create);
-router.put("/:id", LocationController.update);
-router.delete("/:id", LocationController.delete);
+app.get("/", LocationController.get);
+app.get("/:id", LocationController.getById);
+app.post("/", LocationController.create);
+app.put("/:id", LocationController.update);
+app.delete("/:id", LocationController.delete);
 
-module.exports = router
+module.exports = app
