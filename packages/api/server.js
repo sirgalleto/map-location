@@ -4,6 +4,7 @@ const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const location = require("./routes/location");
 
+app.set('io', io)
 app.use(express.json());
 app.use("/location", location);
 
