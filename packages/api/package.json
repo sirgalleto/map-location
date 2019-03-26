@@ -4,7 +4,8 @@
   "description": "Locations REST API ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "export NODE_ENV=test && sequelize db:migrate:undo && sequelize db:migrate",
+    "test": "NODE_ENV=test jest",
     "prestart": "NODE_ENV=production sequelize db:migrate",
     "start": "NODE_ENV=production node index.js",
     "predev": "NODE_ENV=development sequelize db:migrate",
@@ -14,9 +15,11 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
+    "jest": "^24.5.0",
     "sequelize": "^5.1.1",
     "socket.io": "^2.2.0",
-    "sqlite3": "^4.0.6"
+    "sqlite3": "^4.0.6",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
