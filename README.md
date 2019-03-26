@@ -164,6 +164,10 @@ Response
 }
 ```
 
+* API Error Codes
+  * 404: Resource Not Found.
+  * 500: Internal Server Error.
+  * 400: Bad Request.
 
 #### Location channel events
 
