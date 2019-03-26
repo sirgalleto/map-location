@@ -38,11 +38,11 @@ The problem can be divided in two components:
 
 ### Location API
 
-A new locations API that runs using node 8, 
-
 #### Overview 
 
 The _location API_ is a service that interacts with a single table SQLite database, exposes a RESTFUL single endpoint api, and a socket with a `location` channel.
+
+Adittionally the API implementations includes a workflow to create database migrations where the schema is syncronized with the database. 
 
 #### Location Entity
 
@@ -50,7 +50,7 @@ The _location API_ is a service that interacts with a single table SQLite databa
 |:--------:	|:------:	|:------------------------:	|:--------:	|:---------------:	|
 | id       	| Int    	| Location Identifier      	| true     	| 101             	|
 | name     	| String 	| Location name            	| true     	| Skycatch office 	|
-| lat      	| Double 	| Iso 6709:2008 Latitude   	| true     	| 20.665826       	|
+| lat      	| Double 	| ISO 6709:2008 Latitude   	| true     	| 20.665826       	|
 | long     	| Double 	| ISO 6709:2008 Longitude  	| true     	| -103.372706     	|
 | isOpen   	| Bool   	| Locations is open or not 	| true     	| false           	|
 
