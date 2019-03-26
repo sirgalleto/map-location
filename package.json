@@ -3,5 +3,11 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.10.5"
+  },
+  "scripts": {
+    "install": "lerna bootstrap",
+    "start": "lerna run start --stream",
+    "dev": "lerna run dev --stream",
+    "test": "lerna run test --stream"
   }
 }
