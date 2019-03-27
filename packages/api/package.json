@@ -14,6 +14,7 @@
   "author": "Sebastián Osorio <sir@galleto.xyz>",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "jest": "^24.5.0",
     "sequelize": "^5.1.1",
