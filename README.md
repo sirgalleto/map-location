@@ -28,6 +28,10 @@ The frontend should have at least basic editing capabilities for locations, and 
   * SQLite
   * SocketIO
 
+## Assumptions 
+* A Mapbox _access token_ is going to be provided.
+* The solution is not required to run out of the current browser versions.
+
 ## Solution proposal 
 
 The problem can be divided in two components: 
