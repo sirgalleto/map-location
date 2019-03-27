@@ -10,6 +10,7 @@
     "test": "echo \"no test added (yet)\""
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.6.6",
     "vuex": "^3.1.0"
   },
