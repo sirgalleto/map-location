@@ -1,6 +1,6 @@
 <template>
   <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
-     <MglMarker v-for="location in locations" :key="location.id" :coordinates="composeLongLat(location)" color="blue" />
+     <MglMarker v-for="location in locations" :key="location.id" :coordinates="composeLongLat(location)" :color="location.isOpen ? 'blue' : 'red'" />
   </MglMap>
 </template>
 
