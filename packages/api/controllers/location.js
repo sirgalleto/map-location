@@ -12,7 +12,7 @@ function emmitEvent(io, eventType, location) {
     location,
   };
 
-  io.emit("action", body);
+  io.emit("message", body);
 }
 
 module.exports = {
