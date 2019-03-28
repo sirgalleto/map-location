@@ -1,19 +1,18 @@
 const { Location } = require("../models");
 const {
   SEQUELIZE_VALIDATION_ERROR,
-  LOCATIONS_CHANNEL_NAME,
   CREATE,
   UPDATE,
-  DELETE,
-} = require('../constants')
+  DELETE
+} = require("../constants");
 
-function emitChannelEvent(io, eventType, id) {
+function emmitEvent(io, eventType, location) {
   const body = {
     eventType,
-    locationId: id,
-  }
+    location,
+  };
 
-  io.of(LOCATIONS_CHANNEL_NAME).emit(JSON.stringify(body))
+  io.emit("action", body);
 }
 
 module.exports = {
@@ -75,13 +74,13 @@ module.exports = {
    * @return {undefined}
    */
   async create(req, res) {
-    const io = req.app.get('io');
+    const io = req.app.get("locationsIo");
 
     try {
       const location = await Location.create(req.body);
       res.json(location);
 
-      emitChannelEvent(io, CREATE, location.id)
+      emmitEvent(io, CREATE, location);
     } catch (error) {
       console.error("Error: location:create:", error);
 
@@ -108,7 +107,7 @@ module.exports = {
    * @return {undefined}
    */
   async update(req, res) {
-    const io = req.app.get('io');
+    const io = req.app.get("locationsIo");
 
     const { body } = req;
     const locationId = req.params.id;
@@ -125,7 +124,7 @@ module.exports = {
       await location.update(body, { fields: Object.keys(body) });
 
       res.json(location);
-      emitChannelEvent(io, UPDATE, location.id)
+      emmitEvent(io, UPDATE, location);
     } catch (error) {
       if (error.name === SEQUELIZE_VALIDATION_ERROR) {
         res
@@ -153,7 +152,7 @@ module.exports = {
    * @return {undefined}
    */
   async delete(req, res) {
-    const io = req.app.get('io')
+    const io = req.app.get("locationsIo");
     const locationId = req.params.id;
 
     try {
@@ -168,7 +167,7 @@ module.exports = {
       await location.destroy();
 
       res.status(200).send();
-      emitChannelEvent(io, DELETE, location.id)
+      emmitEvent(io, DELETE, location);
     } catch (error) {
       console.error(`Error: location:delete ${locationId}:`, error);
 
