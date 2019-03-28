@@ -9,5 +9,8 @@
     "start": "lerna run start --stream",
     "dev": "lerna run dev --stream",
     "test": "lerna run test --stream"
+  },
+  "dependencies": {
+    "socket.io-client": "^2.2.0"
   }
 }
