@@ -50,6 +50,7 @@ export default {
   created() {
     this.mapbox = Mapbox
     this.fetchLocations()
+    this.startListeningForLocationUpdates()
   },
   computed: {
     ...mapState('locations', {
@@ -60,6 +61,7 @@ export default {
   methods: {
     ...mapActions('locations', {
       fetchLocations: 'fetchLocations',
+      startListeningForLocationUpdates: 'startListeningForUpdates', 
     }),
     composeLongLat(location) {
       return [location.long, location.lat]
