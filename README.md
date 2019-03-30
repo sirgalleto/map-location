@@ -36,15 +36,15 @@ The frontend should have at least basic editing capabilities for locations, and 
 
 The problem can be divided in two components: 
 
-* A *Location API* component that interacts with a datastore where the map locations are located, and expose a RESTFUL endpoint where any client can perform CRUD actions to the location entity, as well as a web socket channel that sends an event when an update happens.
+* A *challenge API* component that interacts with a datastore where the map locations are located, and expose a RESTFUL endpoint where any client can perform CRUD actions to the location entity, as well as a web socket channel that sends an event when an update happens.
 
-* A *frontend client* that presents to the user a map to interact with the locations exposed in the API, with the ability to create, update and delete the locations retrieved. And, receive the real-time updates via web socket connection. 
+* A *webclient* that presents to the user a map to interact with the locations exposed in the API, with the ability to create, update and delete the locations retrieved. And, receive the real-time updates via web socket connection. 
 
-### Location API
+### challenge API
 
 #### Overview 
 
-The _location API_ is a service that interacts with a single table SQLite database, exposes a RESTFUL single endpoint api, and a socket with a `location` channel.
+The challenge API_ is a service that interacts with a single table SQLite database, exposes a RESTFUL single endpoint api, and a socket with a `location` channel.
 
 Adittionally the API implementations includes a workflow to create database migrations where the schema is syncronized with the database. 
 
