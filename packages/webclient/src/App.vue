@@ -1,6 +1,10 @@
 <template>
   <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
-     <MglMarker v-for="location in locations" :key="location.id" :coordinates="composeLongLat(location)" :color="location.isOpen ? 'blue' : 'red'" />
+    <MglMarker v-for="location in locations" :key="location.id" :coordinates="composeLongLat(location)" :color="location.isOpen ? '#4B45E7' : '#EF5350'">
+      <div>
+        Holi
+      </div>
+    </MglMarker>
   </MglMap>
 </template>
 
@@ -18,29 +22,7 @@ export default {
     MglMarker
   },
   data() {
-    const mapStyle = {
-      version: 8,
-      name: "Mapbox Streets",
-      sprite: "mapbox://sprites/mapbox/streets-v8",
-      glyphs: "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
-      sources: {
-        'mapbox-streets': {
-          type: 'vector',
-          url: 'mapbox://mapbox.mapbox-streets-v6'
-        }
-      },
-      layers: [
-        {
-          id: 'water',
-          source: 'mapbox-streets',
-          'source-layer': 'water',
-          type: 'fill',
-          paint: {
-            'fill-color': '#00ffff'
-          }
-        }
-      ]
-    }
+    const mapStyle = 'mapbox://styles/mapbox/dark-v10'
     
     return {
       mapStyle,
