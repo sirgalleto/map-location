@@ -2,15 +2,12 @@
   "name": "skycatch-challenge",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.10.5"
+    "lerna": "^3.13.1"
   },
   "scripts": {
     "install": "lerna bootstrap",
     "start": "lerna run start --stream",
     "dev": "lerna run dev --stream",
     "test": "lerna run test --stream"
-  },
-  "dependencies": {
-    "socket.io-client": "^2.2.0"
   }
 }
