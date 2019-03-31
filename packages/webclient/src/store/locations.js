@@ -3,13 +3,16 @@ import locationService from '../services/location';
 import buildVuexAsyncRequest from '../helpers/buildVuexAsyncRequest';
 
 const fetchItemsAsyncRequest = buildVuexAsyncRequest('fetch', 'items', []);
+const updateLocationAsyncRequest = buildVuexAsyncRequest('update', 'updateLocation', []);
 
 const initialState = {
   ...fetchItemsAsyncRequest.store,
+  ...updateLocationAsyncRequest.store,
 };
 
 const mutations = {
   ...fetchItemsAsyncRequest.mutations,
+  ...updateLocationAsyncRequest.mutations,
   SOCKET_CREATE_LOCATION(state, location) {
     Object.assign(state, {
       items: [...state.items, location],
@@ -30,8 +33,9 @@ const mutations = {
 };
 
 const actions = {
-  fetchLocations: fetchItemsAsyncRequest.actionDecorator(
-    () => locationService.getAll(),
+  fetchLocations: fetchItemsAsyncRequest.actionDecorator(() => locationService.getAll()),
+  updateLocation: fetchItemsAsyncRequest.actionDecorator(
+    location => locationService.update(location),
   ),
   startListeningForUpdates({ commit }) {
     const socket = io('http://localhost:3000/locations');
