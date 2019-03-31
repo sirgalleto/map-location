@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Location = sequelize.define("Location", {
+  const Location = sequelize.define('Location', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -9,23 +9,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lat: {
       type: DataTypes.DOUBLE,
-      allowNull: false
+      allowNull: false,
     },
     long: {
       type: DataTypes.DOUBLE,
-      allowNull: false
+      allowNull: false,
     },
     isOpen: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
-    }
+      defaultValue: false,
+    },
   }, {
-      timestamps: false,
+    timestamps: false,
   });
 
   return Location;

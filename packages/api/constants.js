@@ -1,8 +1,8 @@
-const SEQUELIZE_VALIDATION_ERROR = "SequelizeValidationError";
-const LOCATIONS_CHANNEL_NAME = "/locations";
-const CREATE = "CREATE";
-const UPDATE = "UPDATE";
-const DELETE = "DELETE";
+const SEQUELIZE_VALIDATION_ERROR = 'SequelizeValidationError';
+const LOCATIONS_CHANNEL_NAME = '/locations';
+const CREATE = 'CREATE';
+const UPDATE = 'UPDATE';
+const DELETE = 'DELETE';
 
 module.exports = {
   SEQUELIZE_VALIDATION_ERROR,
@@ -10,4 +10,4 @@ module.exports = {
   CREATE,
   UPDATE,
   DELETE,
-}
+};

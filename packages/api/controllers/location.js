@@ -1,10 +1,10 @@
-const { Location } = require("../models");
+const { Location } = require('../models');
 const {
   SEQUELIZE_VALIDATION_ERROR,
   CREATE,
   UPDATE,
-  DELETE
-} = require("../constants");
+  DELETE,
+} = require('../constants');
 
 function emmitEvent(io, eventType, location) {
   const body = {
@@ -12,7 +12,7 @@ function emmitEvent(io, eventType, location) {
     location,
   };
 
-  io.emit("message", body);
+  io.emit('message', body);
 }
 
 module.exports = {
@@ -29,9 +29,9 @@ module.exports = {
       const locations = await Location.findAll();
       res.json(locations);
     } catch (error) {
-      console.error("Error: location:list:", error);
+      console.error('Error: location:list:', error);
 
-      res.status(500).send("There was an error getting the location list");
+      res.status(500).send('There was an error getting the location list');
     }
   },
 
@@ -53,7 +53,7 @@ module.exports = {
       if (location) {
         res.json(location);
       } else {
-        res.status(404).send("Location not found");
+        res.status(404).send('Location not found');
       }
     } catch (error) {
       console.error(`Error: location:get ${locationId}:`, error);
@@ -74,7 +74,7 @@ module.exports = {
    * @return {undefined}
    */
   async create(req, res) {
-    const io = req.app.get("locationsIo");
+    const io = req.app.get('locationsIo');
 
     try {
       const location = await Location.create(req.body);
@@ -82,17 +82,17 @@ module.exports = {
 
       emmitEvent(io, CREATE, location);
     } catch (error) {
-      console.error("Error: location:create:", error);
+      console.error('Error: location:create:', error);
 
       if (error.name === SEQUELIZE_VALIDATION_ERROR) {
         res
           .status(400)
-          .send(error.errors.map(({ message }) => message).join(" | "));
+          .send(error.errors.map(({ message }) => message).join(' | '));
 
         return;
       }
 
-      res.status(500).send("There was an error creation the location");
+      res.status(500).send('There was an error creation the location');
     }
   },
 
@@ -107,7 +107,7 @@ module.exports = {
    * @return {undefined}
    */
   async update(req, res) {
-    const io = req.app.get("locationsIo");
+    const io = req.app.get('locationsIo');
 
     const { body } = req;
     const locationId = req.params.id;
@@ -116,7 +116,7 @@ module.exports = {
       const location = await Location.findByPk(req.params.id);
 
       if (!location) {
-        res.status(404).send("Location not found");
+        res.status(404).send('Location not found');
 
         return;
       }
@@ -129,7 +129,7 @@ module.exports = {
       if (error.name === SEQUELIZE_VALIDATION_ERROR) {
         res
           .status(400)
-          .send(error.errors.map(({ message }) => message).join(" | "));
+          .send(error.errors.map(({ message }) => message).join(' | '));
 
         return;
       }
@@ -152,14 +152,14 @@ module.exports = {
    * @return {undefined}
    */
   async delete(req, res) {
-    const io = req.app.get("locationsIo");
+    const io = req.app.get('locationsIo');
     const locationId = req.params.id;
 
     try {
       const location = await Location.findByPk(req.params.id);
 
       if (!location) {
-        res.status(404).send("Location not found");
+        res.status(404).send('Location not found');
 
         return;
       }
@@ -175,5 +175,5 @@ module.exports = {
         .status(500)
         .send(`There was an error deleting the location ${locationId}`);
     }
-  }
+  },
 };
