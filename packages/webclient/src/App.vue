@@ -1,10 +1,14 @@
 <template>
-  <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
-    <MglMarker v-for="location in locations" :key="location.id" :coordinates="composeLongLat(location)" :color="location.isOpen ? '#4B45E7' : '#EF5350'">
-      <div>
-        Holi
-      </div>
-    </MglMarker>
+  <MglMap
+    :access-token="accessToken"
+    :map-style="mapStyle"
+  >
+    <MglMarker
+      v-for="location in locations"
+      :key="location.id"
+      :coordinates="composeLongLat(location)"
+      :color="location.isOpen ? '#4B45E7' : '#EF5350'"
+    />
   </MglMap>
 </template>
 
@@ -16,7 +20,7 @@ import { mapActions, mapState } from 'vuex';
 const mapboxAccessToken = process.env.VUE_APP_MAPBOX_ACCESS_TOKEN;
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     MglMap,
     MglMarker,
@@ -29,16 +33,17 @@ export default {
       accessToken: mapboxAccessToken,
     };
   },
-  created() {
-    this.mapbox = Mapbox;
-    this.fetchLocations();
-    this.startListeningForLocationUpdates();
-  },
+
   computed: {
     ...mapState('locations', {
       locations: state => state.items,
       error: state => state.fetchingError,
     }),
+  },
+  created() {
+    this.mapbox = Mapbox;
+    this.fetchLocations();
+    this.startListeningForLocationUpdates();
   },
   methods: {
     ...mapActions('locations', {
