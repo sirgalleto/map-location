@@ -1,33 +1,15 @@
 import io from 'socket.io-client';
 import locationService from '../services/location';
+import buildVuexAsyncRequest from '../helpers/buildVuexAsyncRequest';
+
+const fetchItemsAsyncRequest = buildVuexAsyncRequest('fetch', 'items', []);
 
 const initialState = {
-  isFetching: false,
-  isUpdating: false,
-  requestError: null,
-  items: [],
+  ...fetchItemsAsyncRequest.store,
 };
 
 const mutations = {
-  FETCH_LOCATIONS_REQUEST(state) {
-    Object.assign(state, {
-      isFetching: true,
-      requestError: null,
-    });
-  },
-  FETCH_LOCATIONS_SUCCESS(state, locations) {
-    Object.assign(state, {
-      isFetching: false,
-      items: locations,
-      requestError: null,
-    });
-  },
-  FETCH_LOCATIONS_FAILURE(state, error) {
-    Object.assign(state, {
-      isFetching: false,
-      requestError: error,
-    });
-  },
+  ...fetchItemsAsyncRequest.mutations,
   SOCKET_CREATE_LOCATION(state, location) {
     Object.assign(state, {
       items: [...state.items, location],
@@ -48,16 +30,9 @@ const mutations = {
 };
 
 const actions = {
-  async fetchLocations({ commit }) {
-    commit('FETCH_LOCATIONS_REQUEST');
-
-    try {
-      const locations = await locationService.getAll();
-      commit('FETCH_LOCATIONS_SUCCESS', locations);
-    } catch (error) {
-      commit('FETCH_LOCATIONS_FAILURE', error);
-    }
-  },
+  fetchLocations: fetchItemsAsyncRequest.actionDecorator(
+    () => locationService.getAll(),
+  ),
   startListeningForUpdates({ commit }) {
     const socket = io('http://localhost:3000/locations');
 
