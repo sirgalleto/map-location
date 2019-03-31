@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     node: true,
+    'jest/globals': true,
   },
   extends: ['plugin:vue/recommended', '@vue/airbnb'],
   plugins: ['jest'],
@@ -10,8 +11,5 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
-  },
-  env: {
-    'jest/globals': true,
   },
 };
