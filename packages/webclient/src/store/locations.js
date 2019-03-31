@@ -10,28 +10,40 @@ const initialState = {
 
 const mutations = {
   FETCH_LOCATIONS_REQUEST(state) {
-    state.isFetching = true;
-    state.requestError = null;
+    Object.assign(state, {
+      isFetching: true,
+      requestError: null,
+    });
   },
   FETCH_LOCATIONS_SUCCESS(state, locations) {
-    state.isFetching = false;
-    state.items = locations;
-    state.requestError = null;
+    Object.assign(state, {
+      isFetching: false,
+      items: locations,
+      requestError: null,
+    });
   },
   FETCH_LOCATIONS_FAILURE(state, error) {
-    state.isFetching = false;
-    state.requestError = error;
+    Object.assign(state, {
+      isFetching: false,
+      requestError: error,
+    });
   },
   SOCKET_CREATE_LOCATION(state, location) {
-    state.items = [...state.items, location];
+    Object.assign(state, {
+      items: [...state.items, location],
+    });
   },
   SOCKET_UPDATE_LOCATION(state, updatedLocation) {
-    state.items = state.items.map(location => (location.id === updatedLocation.id ? updatedLocation : location));
+    Object.assign(state, {
+      items: state.items.map(
+        location => (location.id === updatedLocation.id ? updatedLocation : location),
+      ),
+    });
   },
   SOCKET_DELETE_LOCATION(state, deletedLocation) {
-    state.items = state.items.filter(
-      location => location.id === deletedLocation.id,
-    );
+    Object.assign(state, {
+      items: state.items.filter(location => location.id === deletedLocation.id),
+    });
   },
 };
 
@@ -52,9 +64,6 @@ const actions = {
     socket.on('message', ({ eventType, location }) => {
       commit(`SOCKET_${eventType}_LOCATION`, location);
     });
-  },
-  updateLocation({ commit }) {
-
   },
 };
 
