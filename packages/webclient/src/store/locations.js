@@ -3,19 +3,22 @@ import locationService from '../services/location';
 import buildVuexAsyncRequest from '../helpers/buildVuexAsyncRequest';
 
 const fetchItemsAsyncRequest = buildVuexAsyncRequest('fetch', 'items', []);
-const createLocationAsyncRequest = buildVuexAsyncRequest('create', 'createLocation', {});
+const createLocationAsyncRequest = buildVuexAsyncRequest('create', 'createLocation', null);
 const updateLocationAsyncRequest = buildVuexAsyncRequest('update', 'updateLocation', []);
+const deleteLocationAsyncRequest = buildVuexAsyncRequest('delete', 'updateLocation', null);
 
 const initialState = {
   ...fetchItemsAsyncRequest.store,
   ...updateLocationAsyncRequest.store,
   ...createLocationAsyncRequest.store,
+  ...deleteLocationAsyncRequest.store,
 };
 
 const mutations = {
   ...fetchItemsAsyncRequest.mutations,
   ...updateLocationAsyncRequest.mutations,
   ...createLocationAsyncRequest.mutations,
+  ...deleteLocationAsyncRequest.mutations,
   SOCKET_CREATE_LOCATION(state, location) {
     Object.assign(state, {
       items: [...state.items, location],
@@ -42,6 +45,9 @@ const actions = {
   ),
   updateLocation: updateLocationAsyncRequest.actionDecorator(
     location => locationService.update(location),
+  ),
+  deleteLocation: deleteLocationAsyncRequest.actionDecorator(
+    locationId => locationService.delete(locationId),
   ),
   startListeningForUpdates({ commit }) {
     const socket = io('http://localhost:3000/locations');
