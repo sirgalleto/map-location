@@ -35,7 +35,6 @@ export default function buildVuexAsyncRequest(actionName, entityName, initialVal
     actionDecorator(action) {
       return async (context, value) => {
         context.commit(requestMutationName);
-        console.log('yes');
 
         try {
           const result = await action(value);
