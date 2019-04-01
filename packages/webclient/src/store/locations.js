@@ -44,7 +44,7 @@ const actions = {
     location => locationService.create(location),
   ),
   updateLocation: updateLocationAsyncRequest.actionDecorator(
-    location => locationService.update(location),
+    location => locationService.update(location.id, location),
   ),
   deleteLocation: deleteLocationAsyncRequest.actionDecorator(
     locationId => locationService.delete(locationId),

@@ -15,8 +15,8 @@ export default {
     return request.data;
   },
 
-  async update(location) {
-    const request = await axios.put(`${baseUrl}/${location.id}`, location);
+  async update(locationId, location) {
+    const request = await axios.put(`${baseUrl}/${locationId}`, location);
 
     return request.data;
   },
