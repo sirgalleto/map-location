@@ -309,6 +309,5 @@ By the usage of [Vuetify](https://vuetifyjs.com) as UIComponent library, the fol
 * Update location.
 * Delete location.
 
-
 ### Observations 
-* 
+* The `buildVuexAsyncRequest.js` helper is an experimental proposal that remains to a previous idea of the auto-generation of the async-request VUEX flow, wherein the everyday practices, per asynchronous action there are at least three boilerplate mutations, one action, and three new state props. 
