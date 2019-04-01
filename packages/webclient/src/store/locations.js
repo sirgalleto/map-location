@@ -3,16 +3,19 @@ import locationService from '../services/location';
 import buildVuexAsyncRequest from '../helpers/buildVuexAsyncRequest';
 
 const fetchItemsAsyncRequest = buildVuexAsyncRequest('fetch', 'items', []);
+const createLocationAsyncRequest = buildVuexAsyncRequest('create', 'createLocation', {});
 const updateLocationAsyncRequest = buildVuexAsyncRequest('update', 'updateLocation', []);
 
 const initialState = {
   ...fetchItemsAsyncRequest.store,
   ...updateLocationAsyncRequest.store,
+  ...createLocationAsyncRequest.store,
 };
 
 const mutations = {
   ...fetchItemsAsyncRequest.mutations,
   ...updateLocationAsyncRequest.mutations,
+  ...createLocationAsyncRequest.mutations,
   SOCKET_CREATE_LOCATION(state, location) {
     Object.assign(state, {
       items: [...state.items, location],
@@ -34,7 +37,10 @@ const mutations = {
 
 const actions = {
   fetchLocations: fetchItemsAsyncRequest.actionDecorator(() => locationService.getAll()),
-  updateLocation: fetchItemsAsyncRequest.actionDecorator(
+  createLocation: createLocationAsyncRequest.actionDecorator(
+    location => locationService.create(location),
+  ),
+  updateLocation: updateLocationAsyncRequest.actionDecorator(
     location => locationService.update(location),
   ),
   startListeningForUpdates({ commit }) {
