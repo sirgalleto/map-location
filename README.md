@@ -310,3 +310,10 @@ By the usage of [Vuetify](https://vuetifyjs.com) as UIComponent library, the fol
 
 ### Observations 
 * The `buildVuexAsyncRequest.js` helper is an experimental proposal that remains to a previous idea of the auto-generation of the async-request VUEX flow, wherein the everyday practices, per asynchronous action there are at least three boilerplate mutations, one action, and three new state props. 
+
+## Improvements
+
+* Testing.
+* The `emmitEvent` method in the API location controller could be generalized, and separated from the controller where is hard to reach for testing purposes.
+* The `buildVuexAsyncRequest.js` is still a prove of concept, the current implementation let all the generation responsabilities (store, actions, mutations) fall on a single function. Other scenario could be a create a factory per layer, and preserve the function as a less complex builder.
+
