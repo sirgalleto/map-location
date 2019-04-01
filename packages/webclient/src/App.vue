@@ -43,7 +43,6 @@
       @submit="onSubmitLocation"
       @cancel="toggleCreateLocation"
     />
-    <LocationModalForm :show="showEditLocation" />
   </VApp>
 </template>
 
