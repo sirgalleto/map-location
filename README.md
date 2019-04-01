@@ -28,8 +28,9 @@ npm run lint
 
 ## Problem  
 
-We want to show the user a live map of locations that are fetched from a data store. Upon accessing the page the user should see a map around the given locations and it should get updates live if the data is modified elsewhere. Each location at a given latitude and longitude should show the name of the location and a status indicating whether it’s open or not. 
+We want to show the user a live map of locations that are fetched from a data store. Upon accessing the page, the user should see a map around the given locations, and it should get updates live if the data is modified elsewhere. Each location at a given latitude and longitude should show the name of the location and a status indicating whether it’s open or not. 
 The frontend should have at least basic editing capabilities for locations, and any changes on the backend datastore should be reflected without refreshing.
+
 
 ## Constraints 
 
