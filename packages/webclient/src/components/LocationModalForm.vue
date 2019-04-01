@@ -74,12 +74,12 @@ export default {
     },
   },
   data() {
-    const locationModel = !!this.location ? { ...this.location } : {
+    const locationModel = this.location ? { ...this.location } : {
       name: '',
       lat: null,
       long: null,
       isOpen: false,
-    }
+    };
 
     return {
       locationModel,

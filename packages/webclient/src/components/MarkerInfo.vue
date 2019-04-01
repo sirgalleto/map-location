@@ -93,8 +93,8 @@ export default {
       this.$emit('delete', this.location);
     },
     onSubmitUpdate(location) {
-      this.toggleEditForm()
-      this.$emit('update', location)
+      this.toggleEditForm();
+      this.$emit('update', location);
     },
   },
 };
