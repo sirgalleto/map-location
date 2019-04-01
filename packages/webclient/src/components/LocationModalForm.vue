@@ -74,13 +74,15 @@ export default {
     },
   },
   data() {
+    const locationModel = !!this.location ? { ...this.location } : {
+      name: '',
+      lat: null,
+      long: null,
+      isOpen: false,
+    }
+
     return {
-      locationModel: {
-        name: '',
-        lat: null,
-        long: null,
-        isOpen: false,
-      },
+      locationModel,
       formModel: false,
       nameRules: [
         value => !!value || 'Name is required',
