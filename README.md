@@ -246,7 +246,7 @@ This solution can be divided into three main elements
 
 #### State management
 
-Using (VUEX)[https://vuex.vuejs.org/] as state management library the concerns we need to take care are:
+Using [VUEX](https://vuex.vuejs.org/) as state management library the concerns we need to take care are:
 
 * _location_ store: Represents the state of the application in terms of locations, including the requests status, and results. 
 
