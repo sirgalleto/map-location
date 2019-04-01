@@ -42,6 +42,19 @@
       @submit="onSubmitLocation"
       @cancel="toggleCreateLocation"
     />
+    <div
+      v-if="requestError"
+      class="alert-container"
+    >
+      <VAlert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >
+        There was an error with the server connection
+      </VAlert>
+    </div>
   </VApp>
 </template>
 
@@ -77,7 +90,7 @@ export default {
   computed: {
     ...mapState('locations', {
       locations: state => state.items,
-      error: state => state.fetchingError,
+      requestError: state => state.requestError,
     }),
   },
   created() {
@@ -123,6 +136,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .alert-container {
+    position: absolute;
+  }
+</style>
 
 <style>
 .mgl-map-wrapper {
