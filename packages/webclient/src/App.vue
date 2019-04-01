@@ -22,8 +22,8 @@
       :map-style="mapStyle"
     >
       <MglMarker
-        v-for="location in locations"
-        :key="location.id"
+        v-for="(location, key) in locations"
+        :key="`${location.id}-${key}`"
         :coordinates="composeLongLat(location)"
         :color="getPinColor(location.isOpen)"
         @added="popupAdded"
