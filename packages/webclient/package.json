@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "vue-cli-service lint",
     "dev": "NODE_ENV=development vue-cli-service serve",
     "start": "NODE_ENV=production vue-cli-service serve"
