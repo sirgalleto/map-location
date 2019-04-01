@@ -1,15 +1,12 @@
 <template>
-  <div v-if="!editMode">
+  <div class="marker-info-body">
     <h3>
       {{ name }}
     </h3>
     <small>
-      {{ lat }},{{ long }} <br/>
+      {{ lat }},{{ long }} <br>
       <b>{{ isOpen ? 'open' : 'closed' }}</b>
     </small>
-  </div>
-  <div v-else>
-    Hi, I'm in edit mode!
   </div>
 </template>
 
@@ -17,11 +14,6 @@
 export default {
   name: 'MarkerInfo',
   props: {
-    editMode: {
-      default: false,
-      required: false,
-      type: Boolean,
-    },
     name: {
       default: '',
       type: String,
@@ -42,3 +34,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.marker-info-body {
+  min-width: 150px;
+}
+</style>
