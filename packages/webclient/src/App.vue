@@ -30,10 +30,8 @@
       >
         <MglPopup anchor="top">
           <MarkerInfo
-            :name="location.name"
-            :lat="location.lat"
-            :long="location.long"
-            :is-open="location.isOpen"
+            :location="location"
+            @delete="onDeleteLocation($event)"
           />
         </MglPopup>
       </MglMarker>
@@ -49,9 +47,9 @@
 <script>
 import Mapbox from 'mapbox-gl';
 import { MglMap, MglMarker, MglPopup } from 'vue-mapbox';
+import { mapActions, mapState } from 'vuex';
 import MarkerInfo from '@/components/MarkerInfo.vue';
 import LocationModalForm from '@/components/LocationModalForm.vue';
-import { mapActions, mapState } from 'vuex';
 
 const mapboxAccessToken = process.env.VUE_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -91,6 +89,7 @@ export default {
       fetchLocations: 'fetchLocations',
       startListeningForLocationUpdates: 'startListeningForUpdates',
       createLocation: 'createLocation',
+      deleteLocation: 'deleteLocation',
     }),
     composeLongLat(location) {
       return [location.long, location.lat];
@@ -98,6 +97,9 @@ export default {
     onSubmitLocation(location) {
       this.toggleCreateLocation();
       this.createLocation(location);
+    },
+    onDeleteLocation(location) {
+      this.deleteLocation(location.id);
     },
     toggleCreateLocation() {
       this.showCreateLocation = !this.showCreateLocation;
