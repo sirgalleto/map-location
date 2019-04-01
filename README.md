@@ -235,8 +235,6 @@ Response
 
 The challenge webclient provides a UI where the user can see a map with the locations stored in the _challenge API_, perform actions to those locations, and create new locations.
 
-### Assumptions
-* The user will provide a mapboxToken
 
 ### Solution proposal 
 
