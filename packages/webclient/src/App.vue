@@ -112,7 +112,7 @@ export default {
     getPinColor(isOpen) {
       return isOpen ? '#4B45E7' : '#EF5350';
     },
-    // Hack to start popups as closed, a glitch in the start of the page is expected
+    // @hack to start popups as closed, a glitch in the start of the page is expected
     popupAdded(event) {
       // When the event is triggered the popup is still not associated
       // The setTimeout queue this action as last
