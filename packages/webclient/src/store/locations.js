@@ -33,7 +33,7 @@ const mutations = {
   },
   SOCKET_DELETE_LOCATION(state, deletedLocation) {
     Object.assign(state, {
-      items: state.items.filter(location => location.id === deletedLocation.id),
+      items: state.items.filter(location => location.id !== deletedLocation.id),
     });
   },
 };
