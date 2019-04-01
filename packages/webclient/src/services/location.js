@@ -10,7 +10,7 @@ export default {
   },
 
   async create(location) {
-    const request = await axios.put(baseUrl, location);
+    const request = await axios.post(baseUrl, location);
 
     return request.data;
   },
