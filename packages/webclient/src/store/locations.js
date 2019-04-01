@@ -25,10 +25,22 @@ const mutations = {
     });
   },
   SOCKET_UPDATE_LOCATION(state, updatedLocation) {
+    /**
+    * @hack as vue-mapbox does not update the location color,
+    * on any update, the location is removed and then add it again to the array
+    */
     Object.assign(state, {
-      items: state.items.map(
-        location => (location.id === updatedLocation.id ? updatedLocation : location),
+      items: state.items.filter(
+        location => (location.id !== updatedLocation.id),
       ),
+    });
+
+    // Set timeout needed to queue this task as last,
+    // when vue already displayed the previous list
+    setTimeout(() => {
+      Object.assign(state, {
+        items: [...state.items, updatedLocation],
+      });
     });
   },
   SOCKET_DELETE_LOCATION(state, deletedLocation) {
