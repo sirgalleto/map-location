@@ -7,12 +7,12 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run develop
+npm run dev
 ```
 
 ### Compiles and hot-reloads for production
 ```
-npm run build
+npm run start
 ```
 
 ### Compiles and minifies for production
