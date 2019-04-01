@@ -7,12 +7,12 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run dev
+VUE_APP_MAPBOX_ACCESS_TOKEN={mapboxToken} npm run dev
 ```
 
 ### Compiles and hot-reloads for production
 ```
-npm run start
+VUE_APP_MAPBOX_ACCESS_TOKEN={mapboxToken} npm run start
 ```
 
 ### Compiles and minifies for production

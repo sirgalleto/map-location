@@ -1,9 +1,30 @@
 # skycatch-challenge
 Skycatch technical challenge
 
-## How to run
+## Project setup
+```
+npm install
+```
 
-`$ npm run start`
+### Compiles and hot-reloads for development
+```
+VUE_APP_MAPBOX_ACCESS_TOKEN={mapboxToken} npm run dev
+```
+
+### Starts a "production" run
+```
+VUE_APP_MAPBOX_ACCESS_TOKEN={mapboxToken} npm run start
+```
+
+### Run tests
+```
+npm run test
+```
+
+### Lints
+```
+npm run lint
+```
 
 ## Problem  
 
@@ -204,3 +225,10 @@ Response
 
 #### Observations 
 
+### Challenge Webclient 
+
+#### Overview 
+
+The challenge webclient provides a UI where the user can see a map with the locations stored in the _challenge API_, perform actions to those locations, and create new locations.
+
+### 
