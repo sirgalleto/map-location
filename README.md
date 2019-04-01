@@ -57,7 +57,7 @@ The frontend should have at least basic editing capabilities for locations, and 
 
 The problem can be divided in two components: 
 
-* A *challenge API* component that interacts with a datastore where the map locations are located, and expose a RESTFUL endpoint where any client can perform CRUD actions to the location entity, as well as a web socket channel that sends an event when an update happens.
+* A *challenge API* component that interacts with a datastore where the map locations are located, and expose a RESTFUL endpoint where any client can perform CRUD actions to the location entity, as well as a web socket namespace that sends an event when an update happens.
 
 * A *webclient* that presents to the user a map to interact with the locations exposed in the API, with the ability to create, update and delete the locations retrieved. And, receive the real-time updates via web socket connection. 
 
@@ -65,7 +65,7 @@ The problem can be divided in two components:
 
 #### Overview 
 
-The challenge API_ is a service that interacts with a single table SQLite database, exposes a RESTFUL single endpoint api, and a socket with a `location` channel.
+The challenge API_ is a service that interacts with a single table SQLite database, exposes a RESTFUL single endpoint api, and a socket with a `location` namespace.
 
 Adittionally the API implementations includes a workflow to create database migrations where the schema is syncronized with the database. 
 
@@ -194,7 +194,7 @@ Response
   * 500: Internal Server Error.
   * 400: Bad Request.
 
-#### Location channel events
+#### Location namespace events
 
 * Location added 
 
@@ -224,6 +224,9 @@ Response
 ```
 
 #### Observations 
+
+* The first consideration for the database was MySQL, even though the SQLite possibility of no server maintenance and pluggability was the principal reason for its usage.
+* Using the socket.io rooms, where the user should send a room subscription first, and the backend should approve and assign a user to a room was the first approach, however it remains to a no needed backend necessity, reason why using namespaces was the approach to go in order to subscribe to a client only to its topic of interest.
 
 ### Challenge Webclient 
 
@@ -259,7 +262,7 @@ location store base
 }
 ```
 
-* _location_ Mutations: Focus on the different API comming state changes needed, as well as the data injection comming from the socket channel 
+* _location_ Mutations: Focus on the different API comming state changes needed, as well as the data injection comming from the socket namespace 
   * _START_{ACTION}_REQUEST_
   * _REQUEST_{ACTION}_SUCCESS_
   * _REQUEST_ERROR_
@@ -305,3 +308,7 @@ By the usage of [Vuetify](https://vuetifyjs.com) as UIComponent library, the fol
 * Create location.
 * Update location.
 * Delete location.
+
+
+### Observations 
+* 
