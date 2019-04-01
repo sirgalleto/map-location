@@ -318,6 +318,6 @@ By the usage of [Vuetify](https://vuetifyjs.com) as UIComponent library, the fol
 * The `buildVuexAsyncRequest.js` is still a prove of concept, the current implementation let all the generation responsabilities (store, actions, mutations) fall on a single function. Other scenario could be a create a factory per layer, and preserve the function as a less complex builder.
 
 ### Known issues
-* There are two _" hacks"_ to force behaviors not compatibles with Mapbox
+* There are two _" hacks"_ to force behaviors not compatibles with the vue-mapbox library.
   * When a popup is assigned to a marker, it is set as enabled, so when the map is loaded all the popups are open. A method was added to be executed on popup added. The result is a little glitch when the user loads the page.
   * When an updated location event for an isOpenmethod is streamed, the pin-color is not updated. The workaround removes the pin from the state and then add it again. 
