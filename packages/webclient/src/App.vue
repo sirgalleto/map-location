@@ -32,6 +32,7 @@
           <MarkerInfo
             :location="location"
             @delete="onDeleteLocation($event)"
+            @update="onUpdateLocation($event)"
           />
         </MglPopup>
       </MglMarker>
@@ -89,6 +90,7 @@ export default {
       fetchLocations: 'fetchLocations',
       startListeningForLocationUpdates: 'startListeningForUpdates',
       createLocation: 'createLocation',
+      updateLocation: 'updateLocation',
       deleteLocation: 'deleteLocation',
     }),
     composeLongLat(location) {
@@ -97,6 +99,9 @@ export default {
     onSubmitLocation(location) {
       this.toggleCreateLocation();
       this.createLocation(location);
+    },
+    onUpdateLocation(location) {
+      this.updateLocation(location);
     },
     onDeleteLocation(location) {
       this.deleteLocation(location.id);

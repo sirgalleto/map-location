@@ -17,7 +17,7 @@
           flat
           small
           color="gray"
-          @click="$emit('edit', location)"
+          @click="onEdit"
         >
           Edit
         </VBtn>
@@ -39,16 +39,25 @@
     >
       You won't longer see this location
     </Confirm>
+
+    <LocationModalForm
+      :show="showEditForm"
+      :location="location"
+      @submit="onSubmitUpdate($event)"
+      @cancel="toggleEditForm"
+    />
   </div>
 </template>
 
 <script>
 import Confirm from '@/components/Confirm.vue';
+import LocationModalForm from '@/components/LocationModalForm.vue';
 
 export default {
   name: 'MarkerInfo',
   components: {
     Confirm,
+    LocationModalForm,
   },
   props: {
     location: {
@@ -60,14 +69,21 @@ export default {
   data() {
     return {
       showDeleteConfirmation: false,
+      showEditForm: false,
     };
   },
   methods: {
     toggleConfirmation() {
       this.showDeleteConfirmation = !this.showDeleteConfirmation;
     },
+    toggleEditForm() {
+      this.showEditForm = !this.showEditForm;
+    },
     onDelete() {
       this.toggleConfirmation();
+    },
+    onEdit() {
+      this.toggleEditForm();
     },
     onCancelDelete() {
       this.toggleConfirmation();
@@ -75,6 +91,10 @@ export default {
     onConfirmDelete() {
       this.toggleConfirmation();
       this.$emit('delete', this.location);
+    },
+    onSubmitUpdate(location) {
+      this.toggleEditForm()
+      this.$emit('update', location)
     },
   },
 };
