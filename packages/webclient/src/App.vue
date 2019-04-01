@@ -25,7 +25,7 @@
         v-for="location in locations"
         :key="location.id"
         :coordinates="composeLongLat(location)"
-        :color="location.isOpen ? '#4B45E7' : '#EF5350'"
+        :color="getPinColor(location.isOpen)"
         @added="popupAdded"
       >
         <MglPopup anchor="top">
@@ -108,6 +108,9 @@ export default {
     },
     toggleCreateLocation() {
       this.showCreateLocation = !this.showCreateLocation;
+    },
+    getPinColor(isOpen) {
+      return isOpen ? '#4B45E7' : '#EF5350';
     },
     // Hack to start popups as closed, a glitch in the start of the page is expected
     popupAdded(event) {
