@@ -121,10 +121,10 @@ module.exports = {
         return;
       }
 
-      await location.update(body, { fields: Object.keys(body) });
+      const updatedLocation = await location.update(body, { fields: Object.keys(body) });
 
-      res.json(location);
-      emmitEvent(io, UPDATE, location);
+      res.json(updatedLocation);
+      emmitEvent(io, UPDATE, updatedLocation);
     } catch (error) {
       if (error.name === SEQUELIZE_VALIDATION_ERROR) {
         res
