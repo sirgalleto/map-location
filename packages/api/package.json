@@ -18,7 +18,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jest": "^24.5.0",
-    "sequelize": "^5.1.1",
+    "sequelize": "^5.15.1",
     "socket.io": "^2.2.0",
     "sqlite3": "^4.0.6",
     "supertest": "^4.0.2"
