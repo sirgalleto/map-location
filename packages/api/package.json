@@ -19,7 +19,7 @@
     "express": "^4.16.4",
     "jest": "^24.5.0",
     "sequelize": "^5.1.1",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.5.0",
     "sqlite3": "^4.0.6",
     "supertest": "^4.0.2"
   },
